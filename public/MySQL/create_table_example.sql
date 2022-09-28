@@ -24,6 +24,17 @@ INSERT INTO member
 VALUES(001,'tktk426','abcd1234','王小明','亂源阿明','ahmin@gmail.com','桃園市','中壢區','復興路46號9樓','0987987987','2','1','2022-09-28 00:00:00'),
 	  (002,'tktk0426','abcd1234','林志奸','我的抄人','superman@gmail.com','新竹市','子虛區','烏有路87號','0987487487','1','1','2022-09-28 10:00:00');
 
+create table employee(
+employee_no int PRIMARY KEY AUTO_INCREMENT,
+employee_name varchar(100) not null,
+employee_auth tinyint not null,
+employee_sex varchar(15) not null,
+employee_email varchar(100) not null,
+employee_phone varchar(20) not null,
+employee_status tinyint not null
+);
+
+
 create table discuss(
 discuss_no int PRIMARY KEY AUTO_INCREMENT,
 mem_no int not null,
