@@ -18,11 +18,6 @@ mem_status tinyint NOT NULL,
 reigister_date datetime NOT NULL
 );
 
--- 塞東西的話照這個方式 into 後面加你的table名稱 values括號裡面照著順序一個一個打
--- 每筆資料塞一個括號,記得用逗號隔開
-INSERT INTO member 
-VALUES(001,'tktk426','abcd1234','王小明','亂源阿明','ahmin@gmail.com','桃園市','中壢區','復興路46號9樓','0987987987','2','1','2022-09-28 00:00:00'),
-	  (002,'tktk0426','abcd1234','林志奸','我的抄人','superman@gmail.com','新竹市','子虛區','烏有路87號','0987487487','1','1','2022-09-28 10:00:00');
 
 create table employee(
 employee_no int PRIMARY KEY AUTO_INCREMENT,
@@ -82,30 +77,12 @@ news_pic varchar(50) not null,
 news_post_time datetime not null
 );
 
-create table orders(
-orders_no int PRIMARY KEY AUTO_INCREMENT,
-tent_no int not null,
-mem_no int not null,
-tent_style_no int not null,
-activity_no int,
-food_no int,
-equip_no int,
-area_no tinyint not null,
-payment_methods tinyint not null,
-payment_time datetime ,
-account_no int not null,
-payment_status tinyint not null,
-orders_total int not null,
-orders_time datetime not null,
-checkin_date datetime not null,
-checkout_date datetime not null,
-constraint fk_orders_mem_no foreign key (mem_no) references member (mem_no),
-constraint fk_orders_tent_no foreign key (tent_no) references tent (tent_no),
-constraint fk_orders_tent_style_no foreign key (tent_style_no) references tent_style (tent_style_no),
-constraint fk_orders_activity_no foreign key (activity_no) references activity (activity_no),
-constraint fk_orders_food_no foreign key (food_no) references food (food_no),
-constraint fk_orders_equip_no foreign key (equip_no) references equip (equip_no),
-constraint fk_orders_area_no foreign key (area_no) references area (area_no)
+create table area(
+area_no tinyint not null PRIMARY KEY,
+area_name varchar(20) not null,
+area_subtitle varchar(30) not null,
+area_info varchar(1000) not null,
+area_pic varchar(50) not null
 );
 
 create table tent_style(
@@ -133,24 +110,6 @@ tent_year datetime not null,
 constraint fk_tent_tent_style_no foreign key (tent_style_no) references tent_style (tent_style_no),
 constraint fk_tent_area_no foreign key (area_no) references area (area_no),
 constraint fk_tent_mem_no foreign key (mem_no) references member (mem_no)
-);
-
-create table area(
-area_no tinyint not null PRIMARY KEY,
-area_name varchar(20) not null,
-activity_subtitle varchar(30) not null,
-activity_info varchar(1000) not null,
-activity_pic varchar(50) not null
-);
-
-create table reserve(
-reserve_no int PRIMARY KEY AUTO_INCREMENT,
-tent_style_no int not null,
-reserve_date datetime not null,
-tent_left int not null,
-tent_stock int not null,
-reserve_status tinyint not null,
-constraint fk_reserve_tent_style_no foreign key (tent_style_no) references tent_style (tent_style_no)
 );
 
 create table food(
@@ -184,6 +143,42 @@ activity_note varchar(500),
 constraint fk_activity_area_no foreign key (area_no) references area (area_no)
 );
 
+create table orders(
+orders_no int PRIMARY KEY AUTO_INCREMENT,
+tent_no int not null,
+mem_no int not null,
+tent_style_no int not null,
+activity_no int,
+food_no int,
+equip_no int,
+area_no tinyint not null,
+payment_methods tinyint not null,
+payment_time datetime ,
+account_no int not null,
+payment_status tinyint not null,
+orders_total int not null,
+orders_time datetime not null,
+checkin_date datetime not null,
+checkout_date datetime not null,
+constraint fk_orders_mem_no foreign key (mem_no) references member (mem_no),
+constraint fk_orders_tent_no foreign key (tent_no) references tent (tent_no),
+constraint fk_orders_tent_style_no foreign key (tent_style_no) references tent_style (tent_style_no),
+constraint fk_orders_activity_no foreign key (activity_no) references activity (activity_no),
+constraint fk_orders_food_no foreign key (food_no) references food (food_no),
+constraint fk_orders_equip_no foreign key (equip_no) references equip (equip_no),
+constraint fk_orders_area_no foreign key (area_no) references area (area_no)
+);
+
+create table reserve(
+reserve_no int PRIMARY KEY AUTO_INCREMENT,
+tent_style_no int not null,
+reserve_date datetime not null,
+tent_left int not null,
+tent_stock int not null,
+reserve_status tinyint not null,
+constraint fk_reserve_tent_style_no foreign key (tent_style_no) references tent_style (tent_style_no)
+);
+
 create table product_order(
 product_order_no int PRIMARY KEY AUTO_INCREMENT,
 mem_no int not null,
@@ -195,14 +190,9 @@ product_order_total int not null,
 constraint fk_product_order_mem_no foreign key (mem_no) references member (mem_no)
 );
 
-create table Product_order_list(
-product_order_no int not null,
-product_no int not null,
-product_order_list_qty int not null,
-product_order_list_price int not null,
-constraint fk_product_order_list_product_order_no foreign key (product_order_no) references product_order (product_order_no),
-constraint fk_product_order_list_product_no foreign key (product_no) references product (product_no),
-constraint pk_product_order_list_product_order_no_product_no primary key(product_order_no,product_no)
+create table product_type(
+product_type_no int primary key,
+product_type_name varchar(20) not null
 );
 
 create table Product(
@@ -217,10 +207,19 @@ product_update date not null,
 constraint fk_product_product_type_no foreign key (product_type_no) references product_type (product_type_no)
 );
 
-create table product_type(
-product_type_no int primary key,
-product_type_name varchar(20) not null
+create table Product_order_list(
+product_order_no int not null,
+product_no int not null,
+product_order_list_qty int not null,
+product_order_list_price int not null,
+constraint fk_product_order_list_product_order_no foreign key (product_order_no) references product_order (product_order_no),
+constraint fk_product_order_list_product_no foreign key (product_no) references product (product_no),
+constraint pk_product_order_list_product_order_no_product_no primary key(product_order_no,product_no)
 );
+
+
+
+
 
 
 
