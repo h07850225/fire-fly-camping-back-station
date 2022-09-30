@@ -1,6 +1,6 @@
--- 先new一個schema出來(點那個有加號的圓柱體)
--- 再到建立好的schema上面執行這個檔案(ctrl+a全選後點雷電就好了)
-CREATE DATABASE tibamefe_cgd102g1;
+
+-- 先建立好下面這行的database，再註解後ctrl+a全選後點雷電就好了
+-- CREATE DATABASE tibamefe_cgd102g1;
 
 
 -- CREATE TABLE 後面加TABLE名稱 (欄位名稱_欄位類型_欄位特性) _代表空白
@@ -232,4 +232,4 @@ constraint pk_product_order_list_product_order_no_product_no primary key(product
 
 
 -- (清空member所有資料)
- DELETE FROM member;
+-- DELETE FROM member;
