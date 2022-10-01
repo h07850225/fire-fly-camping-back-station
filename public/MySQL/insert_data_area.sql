@@ -1,9 +1,9 @@
-create table area(
-area_no tinyint not null PRIMARY KEY,
-area_name varchar(20) not null,
-area_subtitle varchar(30) not null,
-area_info varchar(1000) not null
-);
+-- create table area(
+-- area_no tinyint not null PRIMARY KEY,
+-- area_name varchar(20) not null,
+-- area_subtitle varchar(30) not null,
+-- area_info varchar(1000) not null
+-- );
 
 INSERT INTO area
 VALUES (1,'叢林歷險','擁有茂密森林，生物多樣性和植物的自然美','叢林探險是考驗玩家取捨的策略遊戲。玩家們扮演攝影團隊，在叢林追尋動物的蹤跡，拍下他們迷人的身影。然而，在叢林探險時也會遭遇各種問題，除了身邊的夥伴可能會帶著照片偷跑，還要提防有害的蚊蟲襲擊，不小心得了傳染病就只能一無所獲的回家休息了！'),
