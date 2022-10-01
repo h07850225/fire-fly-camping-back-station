@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 -- 先new一個schema出來(點那個有加號的圓柱體)
 -- 再到建立好的schema上面執行這個檔案(ctrl+a全選後點雷電就好了)
+=======
+
+-- 先建立好下面這行的database，再註解後ctrl+a全選後點雷電就好了
+>>>>>>> d7fb28fe958ebf3c144f06d7a2a66c18d39e93f4
 -- CREATE DATABASE tibamefe_cgd102g1;
 
 
@@ -230,7 +235,11 @@ constraint pk_product_order_list_product_order_no_product_no primary key(product
 
 
 -- (清空member所有資料)
+<<<<<<< HEAD
  -- DELETE FROM member;
  
 -- alter table discuss
 -- drop column discuss_pic;
+=======
+-- DELETE FROM member;
+>>>>>>> d7fb28fe958ebf3c144f06d7a2a66c18d39e93f4
