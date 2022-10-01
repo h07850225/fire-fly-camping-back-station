@@ -89,12 +89,10 @@ area_subtitle varchar(30) not null,
 area_info varchar(1000) not null
 );
 
-
-
 create table tent_style(
-tent_style_no int PRIMARY KEY AUTO_INCREMENT,
+tent_style_no int PRIMARY KEY AUTO_INCREMENT, 
 tent_style_people tinyint not null,
-area_no tinyint not null,
+area_no tinyint not null, 
 tent_style_type tinyint not null,
 tent_style_name varchar(20) not null,
 tent_style_pic varchar(50) not null,
