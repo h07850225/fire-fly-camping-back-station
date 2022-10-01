@@ -1,6 +1,6 @@
 -- 先new一個schema出來(點那個有加號的圓柱體)
 -- 再到建立好的schema上面執行這個檔案(ctrl+a全選後點雷電就好了)
-CREATE DATABASE tibamefe_cgd102g1;
+-- CREATE DATABASE tibamefe_cgd102g1;
 
 
 -- CREATE TABLE 後面加TABLE名稱 (欄位名稱_欄位類型_欄位特性) _代表空白
@@ -37,14 +37,12 @@ discuss_no int PRIMARY KEY AUTO_INCREMENT,
 mem_no int not null,
 discuss_title varchar(50),
 discuss_content varchar(1000),
-discuss_pic varchar(50),
 discuss_post_time DATETIME Not Null,
 discuss_status TINYINT not null,
 comment_count INT,
 background_type TINYINT Not Null,
 constraint fk_discuss_mem_no foreign key (mem_no) references member (mem_no)
 );
-
 
 create table comment(
 comment_no int PRIMARY KEY AUTO_INCREMENT,
@@ -228,8 +226,11 @@ constraint pk_product_order_list_product_order_no_product_no primary key(product
 
 
 -- (執行這個才能解除安全模式刪除資料)
--- SET SQL_SAFE_UPDATES = 0;
+ SET SQL_SAFE_UPDATES = 0;
 
 
 -- (清空member所有資料)
- DELETE FROM member;
+ -- DELETE FROM member;
+ 
+-- alter table discuss
+-- drop column discuss_pic;
