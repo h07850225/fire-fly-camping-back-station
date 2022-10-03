@@ -1,6 +1,11 @@
 -- 先new一個schema出來(點那個有加號的圓柱體)
 -- 再到建立好的schema上面執行這個檔案(ctrl+a全選後點雷電就好了)
 
+
+-- 先建立好下面這行的database，再註解後ctrl+a全選後點雷電就好了
+-- CREATE DATABASE tibamefe_cgd102g1;
+
+
 -- CREATE TABLE 後面加TABLE名稱 (欄位名稱_欄位類型_欄位特性) _代表空白
 CREATE TABLE Member(
 mem_no int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -35,14 +40,12 @@ discuss_no int PRIMARY KEY AUTO_INCREMENT,
 mem_no int not null,
 discuss_title varchar(50),
 discuss_content varchar(1000),
-discuss_pic varchar(50),
 discuss_post_time DATETIME Not Null,
 discuss_status TINYINT not null,
 comment_count INT,
 background_type TINYINT Not Null,
 constraint fk_discuss_mem_no foreign key (mem_no) references member (mem_no)
 );
-
 
 create table comment(
 comment_no int PRIMARY KEY AUTO_INCREMENT,
@@ -71,24 +74,23 @@ constraint fk_report_comment_no foreign key (comment_no) references comment (com
 create table news(
 news_no int PRIMARY KEY AUTO_INCREMENT,
 news_title varchar(30) not null,
-news_subtitle varchar(30) not null,
 news_content varchar(1000) not null,
 news_pic varchar(50) not null,
-news_post_time datetime not null
+news_post_time datetime not null,
+news_status tinyint not null
 );
 
 create table area(
 area_no tinyint not null PRIMARY KEY,
 area_name varchar(20) not null,
 area_subtitle varchar(30) not null,
-area_info varchar(1000) not null,
-area_pic varchar(50) not null
+area_info varchar(1000) not null
 );
 
 create table tent_style(
-tent_style_no int PRIMARY KEY AUTO_INCREMENT,
+tent_style_no int PRIMARY KEY AUTO_INCREMENT, 
 tent_style_people tinyint not null,
-area_no tinyint not null,
+area_no tinyint not null, 
 tent_style_type tinyint not null,
 tent_style_name varchar(20) not null,
 tent_style_pic varchar(50) not null,
@@ -225,8 +227,14 @@ constraint pk_product_order_list_product_order_no_product_no primary key(product
 
 
 -- (執行這個才能解除安全模式刪除資料)
--- SET SQL_SAFE_UPDATES = 0;
+ SET SQL_SAFE_UPDATES = 0;
 
 
 -- (清空member所有資料)
+ -- DELETE FROM member;
+ 
+-- alter table discuss
+-- drop column discuss_pic;
+
 -- DELETE FROM member;
+
