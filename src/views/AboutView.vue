@@ -1,6 +1,6 @@
 <template>
   <div class="about" v-for="item in data" :key="item">
-    {{item}}
+    {{item.mem_no}}
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     }
   },
   created(){
-    fetch('http://localhost/phpLab/firefly_camping_back_station/src/assets/phps/test.php')
+    fetch('http://localhost/phpLab/firefly_camping_back_station/public/phps/test.php')
     .then((res)=>{
       return res.json()
     })
