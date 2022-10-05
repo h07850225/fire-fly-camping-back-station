@@ -156,12 +156,12 @@ equip_no int,
 area_no tinyint not null,
 payment_methods tinyint not null,
 payment_time datetime ,
-account_no int not null,
+account_no varchar(5) not null,
 payment_status tinyint not null,
 orders_total int not null,
 orders_time datetime not null,
-checkin_date datetime not null,
-checkout_date datetime not null,
+checkin_date date not null,
+checkout_date date not null,
 constraint fk_orders_mem_no foreign key (mem_no) references member (mem_no),
 constraint fk_orders_tent_no foreign key (tent_no) references tent (tent_no),
 constraint fk_orders_tent_style_no foreign key (tent_style_no) references tent_style (tent_style_no),
@@ -170,6 +170,7 @@ constraint fk_orders_food_no foreign key (food_no) references food (food_no),
 constraint fk_orders_equip_no foreign key (equip_no) references equip (equip_no),
 constraint fk_orders_area_no foreign key (area_no) references area (area_no)
 );
+
 
 create table reserve(
 reserve_no int PRIMARY KEY AUTO_INCREMENT,
@@ -202,7 +203,6 @@ product_no int PRIMARY KEY,
 product_type_no int ,
 product_name VARCHAR(20) not null,
 product_price int not null,
-product_info varchar(1000) not null,
 product_pic varchar(50) not null,
 product_status tinyint not null,
 product_update date not null,
@@ -231,10 +231,12 @@ constraint pk_product_order_list_product_order_no_product_no primary key(product
 
 
 -- (清空member所有資料)
- -- DELETE FROM member;
+ -- DELETE FROM orders;
  
--- alter table discuss
--- drop column discuss_pic;
+ -- drop table orders;
+ 
+-- alter table orders
+-- drop column payment_methods;
 
 -- DELETE FROM member;
 

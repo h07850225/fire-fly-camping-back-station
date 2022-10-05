@@ -9,4 +9,3 @@ drop column news_subtitle;
        
 alter table news
 add column news_status tinyint not null;
-
