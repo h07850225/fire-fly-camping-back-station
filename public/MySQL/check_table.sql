@@ -14,7 +14,9 @@ SELECT * FROM tibamefe_cgd102g1.tent_style;
 
 SELECT * FROM tibamefe_cgd102g1.food;
 
-SELECT * FROM tibamefe_cgd102g1.equip;
+SELECT * FROM tibamefe_cgd102g1.news;
+
+SELECT * FROM tibamefe_cgd102g1.orders;
 
 
 
