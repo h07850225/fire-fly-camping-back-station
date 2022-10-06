@@ -12,11 +12,14 @@ SELECT * FROM tibamefe_cgd102g1.area;
 
 SELECT * FROM tibamefe_cgd102g1.tent_style;
 
+SELECT * FROM tibamefe_cgd102g1.tent;
+
 SELECT * FROM tibamefe_cgd102g1.food;
 
 SELECT * FROM tibamefe_cgd102g1.news;
 
 SELECT * FROM tibamefe_cgd102g1.orders;
+
 
 
 
