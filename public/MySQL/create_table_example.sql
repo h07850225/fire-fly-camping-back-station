@@ -206,6 +206,7 @@ product_price int not null,
 product_pic varchar(50) not null,
 product_status tinyint not null,
 product_update date not null,
+product_qty int not null,
 constraint fk_product_product_type_no foreign key (product_type_no) references product_type (product_type_no)
 );
 
