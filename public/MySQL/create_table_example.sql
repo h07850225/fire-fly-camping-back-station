@@ -17,7 +17,7 @@ mem_addr varchar(300) NOT NULL,
 mem_phone varchar(30) NOT NULL,
 mem_pic tinyint ,
 mem_status tinyint NOT NULL,
-reigister_date datetime NOT NULL
+register_date datetime NOT NULL
 );
 
 INSERT INTO member 
