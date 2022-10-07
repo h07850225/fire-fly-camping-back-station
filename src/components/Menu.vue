@@ -1,7 +1,7 @@
 <template>
 <aside class="left_menu">
     <router-link to="/" class="project_logo">
-        <img src="@/assets/Image/logo/logo_row_FFF.png" alt="Logo">
+        <!-- <img src="@/assets/Image/logo/logo_row_FFF.png" alt="Logo"> -->
     </router-link>
     <div class="menu_zone">
         <div v-for="menu,index in menus" :class="{menu_row: menuList==i}"> 
