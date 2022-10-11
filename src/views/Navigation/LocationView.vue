@@ -70,68 +70,33 @@ export default {
         title:'營區導覽',
         titles:[
         {
-            thName:'test',
+            thName:'地區編號',
         },
         {
-            thName:'test',
+            thName:'地區名稱',
         },
         {
-            thName:'test',
+            thName:'地區副標題',
         },
         {
-            thName:'test',
+            thName:'地區介紹',
         },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
+   
         ],
         items:[       
         {
             lists:[
             {
-                tdName:'test',
+                tdName:'1',
             },
             {
-                tdName:'test',
+                tdName:'2',
             },
             {
-                tdName:'test',
+                tdName:'3',
             },
             {
-                tdName:'test',
-            },
-            {
-                tdName:'test',
-            },
-            {
-                tdName:'test',
-            },
-            {
-                tdName:'test',
-            },
-            {
-                tdName:'test',
-            },
-            {
-                tdName:'test',
-            },
-            {
-                tdName:'test',
+                tdName:'4',
             },
             ]
         },

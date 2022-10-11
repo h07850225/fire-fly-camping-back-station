@@ -69,43 +69,19 @@ export default {
         chtName: '活動方案管理',
         title:'營區導覽',
         titles:[
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
+        '活動編號',
+        '活動名稱',
+        '活動介紹副標題',
+        '活動簡介',
+        '活動介紹',
+        '活動圖片',
+        '活動價格',
+        '活動適合族群',
+        '活動注意事項',
         ],
         items:[       
         {
             lists:[
-            {
-                tdName:'test',
-            },
             {
                 tdName:'test',
             },

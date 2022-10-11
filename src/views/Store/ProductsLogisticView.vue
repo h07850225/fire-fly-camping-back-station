@@ -21,35 +21,17 @@
   <button>刪除</button>
 </div>  
 
-<table>
-  <tr class="table_title">
-    <th v-for="title in titles" :class="{title_list: titleList==i}">{{title.thName}}</th>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-</table>
+ <table>
+      <tr class="table_title">
+        <th v-for="item in titles" :key="item">
+          {{ item }}
+        </th>
+      </tr>
+      <tr v-for="item in productsType" :key="item">
+        <td>{{ item.product_type_no }}</td>
+        <td>{{ item.product_type_name }}</td>
+      </tr>
+    </table>
 
 </section>
 
@@ -66,76 +48,13 @@ components: {
 },
 data() {
   return {
-    chtName: '商品物流管理',
+    productsType: [],
+    chtName: '商品類別管理',
     title:'營火商城',
     titles:[
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
+      '商品類別編號',
+      '商品類別名稱',
     ],
-    items:[       
-      {
-        lists:[
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-        ]
-      },
-    ]
   }
 },
 }
