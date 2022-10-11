@@ -22,34 +22,19 @@
 </div>  
 
 <table>
-  <tr class="table_title">
-    <th v-for="title in titles" :class="{title_list: titleList==i}">{{title.thName}}</th>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-</table>
+      <tr class="table_title">
+        <th v-for="item in titles" :key="item">
+          {{ item }}
+        </th>
+      </tr>
+      <tr v-for="item in productOrderList" :key="item">
+        <td>{{ item.product_order_no }}</td>
+        <td>{{ item.product_no }}</td>
+        <td>{{ item.product_order_list_qty }}</td>
+        <td>{{ item.product_order_list_price }}</td>
+        
+      </tr>
+    </table>
 
 </section>
 
@@ -64,80 +49,40 @@ name: 'HomeView',
 components: {
   Main,
 },
+beforeMount() {
+    // 後端抓資料
+    this.FetchAPIProductOrderList();
+  },
 data() {
   return {
+    productOrderList: [],
     chtName: '商品訂單管理',
     title:'營火商城',
     titles:[
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
+      '商品訂單編號',
+      '商品編號',
+      '商品數量',
+      '商品價格',
     ],
-    items:[       
-      {
-        lists:[
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-        ]
-      },
-    ]
   }
 },
+methods: {
+    FetchAPIProductOrderList() {
+      fetch(`http://localhost/Group%20project/firefly_camp_php/product_order_list.php`)
+        .then((response) => {
+          if (response) {
+            this.fetchError = response.status !== 200;
+            return response.json();
+          }
+        })
+        .then((responseText) => {
+          this.productOrderList = responseText;
+        })
+        .catch((err) => {
+          this.productOrderList = [];
+        });
+    },
+  },
 }
 </script>
 
