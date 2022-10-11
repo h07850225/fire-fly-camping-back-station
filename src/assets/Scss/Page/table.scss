@@ -47,6 +47,7 @@ th, td{
     text-align: center;
     padding: 14px 12px;
     font-size: 14px;
+    // box-shadow: 1px 1px 1px #000;
 }
 th{
     color: #FFFFFF;
@@ -60,4 +61,10 @@ th{
 }
 .item_content:hover{
     background-color: #FFFFFF;
+}
+.list_content{
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

@@ -23,31 +23,15 @@
 
   <table>
     <tr class="table_title">
-      <th v-for="title in titles" :class="{title_list: titleList==i}">{{title.thName}}</th>
+      <th v-for="title in titles" :class="{title_list: titleList==i}" :key="title">{{title.thName}}</th>
     </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-    </tr>
-    <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-      <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
+    <tr v-for="item in newsList" :class="{item_content: itemContent==i}" :key="item">
+      <td :class="{list_content: listContent==i}">{{item.news_no}}</td>
+      <td :class="{list_content: listContent==i}">{{item.news_title}}</td>
+      <td :class="{list_content: listContent==i}">{{item.news_content}}</td>
+      <td :class="{list_content: listContent==i}">{{item.news_pic}}</td>
+      <td :class="{list_content: listContent==i}">{{item.news_post_time}}</td>
+      <td :class="{list_content: listContent==i}">{{item.news_status}}</td>
     </tr>
   </table>
 
@@ -70,74 +54,60 @@ export default {
       title:'最新消息',
       titles:[
         {
-            thName:'test',
+            thName:'最新消息編號',
         },
         {
-            thName:'test',
+            thName:'最新消息標題',
         },
         {
-            thName:'test',
+            thName:'最新消息內文',
         },
         {
-            thName:'test',
+            thName:'最新消息圖片',
         },
         {
-            thName:'test',
+            thName:'發布時間',
         },
         {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
-        {
-            thName:'test',
-        },
+            thName:'最新消息狀態',
+        }
       ],
-      items:[       
-        {
-          lists:[
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-            {
-              tdName:'test',
-            },
-          ]
-        },
-      ]
+      newsList:[],
+      status:'',
+      
     }
   },
+  // methods:{
+  //   transNewsStatus(){
+  //     console.log('new',this.newsList)
+  //     if(this.newsList.new_status==1){
+  //       this.status = "顯示"
+  //     }else{
+  //       this.status = "隱藏"
+  //     }
+  //   }
+  // }
+  // ,
+  created(){
+    fetch('http://localhost/phpLab/firefly_camping_php/backstation_news.php')
+    .then((res)=>{
+    // this.fetchError = (response.status !== 200)
+    return res.json()
+    })
+    .then((newsContent)=>{
+    console.log(newsContent)
+    this.newsList=newsContent
+    console.log(this.newsList)
+    // if(this.newsList.new_status==1){
+    //   this.status = "顯示"
+    // }else{
+    //   this.status = "隱藏"
+    // }
+    })
+  },
+  // mounted(){
+  //   this.transNewsStatus();
+  // }
 }
 </script>
 
