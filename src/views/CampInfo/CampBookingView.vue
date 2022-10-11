@@ -25,6 +25,19 @@
           {{ item }}
         </th>
       </tr>
+      <tr v-for="item in orders" :key="item">
+        <td>{{ item.order_no }}</td>
+        <td>{{ item.mem_id }}</td>
+        <td>{{ item.mem_name }}</td>
+        <td>{{ item.tent_no }}</td>
+        <td>{{ item.tent_style_no }}</td>
+        <td>{{ item.payment_methods }}</td>
+        <td>{{ item.payment_status }}</td>
+        <td>{{ item.order_total }}</td>
+        <td>{{ item.checkin_date }}</td>
+        <td>{{ item.checkout_date }}</td>
+        <td><button>更多</button></td>
+      </tr>
     </table>
   </section>
 </template>
@@ -44,8 +57,8 @@ export default {
       title: '營區預訂',
       titles: [
         '預訂號碼',
-        '會員編號',
         '會員ID',
+        '會員姓名',
         '營帳編號',
         '營帳類型編號',
         '付款方式',
@@ -55,7 +68,28 @@ export default {
         '退房日期',
         '詳細資訊',
       ],
+      orders: [],
     };
+  },
+  methods: {
+    FetchAPIComment() {
+      fetch(`http://127.0.0.1/g1/back-end/bookedOrdersBack.php`)
+        .then((response) => {
+          if (response) {
+            this.fetchError = response.status !== 200;
+            return response.json();
+          }
+        })
+        .then((responseText) => {
+          this.orders = responseText;
+        })
+        .catch((err) => {
+          this.orders = [];
+        });
+    },
+  },
+  created() {
+    this.FetchAPIComment();
   },
 };
 </script>

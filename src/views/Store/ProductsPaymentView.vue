@@ -22,34 +22,21 @@
 </div>  
 
 <table>
-  <tr class="table_title">
-    <th v-for="title in titles" :class="{title_list: titleList==i}">{{title.thName}}</th>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-  <tr v-for="item,index in items" :class="{item_content: itemContent==i}">
-    <td v-for="list in item.lists" :class="{list_content: listContent==i}">{{list.tdName}}</td>
-  </tr>
-</table>
+      <tr class="table_title">
+        <th v-for="item in titles" :key="item">
+          {{ item }}
+        </th>
+      </tr>
+      <tr v-for="item in productOrder" :key="item">
+        <td>{{ item.product_order_no }}</td>
+        <td>{{ item.mem_no }}</td>
+        <td>{{ item.product_order_status }}</td>
+        <td>{{ item.product_order_time }}</td>
+        <td>{{ item.product_order_pickup_time }}</td>
+        <td>{{ item.product_order_pickup_place }}</td>
+        <td>{{ item.product_order_total }}</td>
+      </tr>
+    </table>
 
 </section>
 
@@ -64,80 +51,43 @@ name: 'HomeView',
 components: {
   Main,
 },
+beforeMount() {
+    // 後端抓資料
+    this.FetchAPIProductOrder();
+  },
 data() {
   return {
     chtName: '商品付款管理',
     title:'營火商城',
     titles:[
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
-      {
-          thName:'test',
-      },
+        '商品訂單編號',
+        '會員編號',
+        '訂單狀態',
+        '下單時間',
+        '取貨時間',
+        '配送地點',
+        '總額',
     ],
-    items:[       
-      {
-        lists:[
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-          {
-            tdName:'test',
-          },
-        ]
-      },
-    ]
-  }
+    productOrder: [],
+  };
 },
+methods: {
+    FetchAPIProductOrder() {
+      fetch(`http://localhost/Group%20project/firefly_camp_php/product.php`)
+        .then((response) => {
+          if (response) {
+            this.fetchError = response.status !== 200;
+            return response.json();
+          }
+        })
+        .then((responseText) => {
+          this.productOrder = responseText;
+        })
+        .catch((err) => {
+          this.productOrder = [];
+        });
+    },
+  },
 }
 </script>
 
