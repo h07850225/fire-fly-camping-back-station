@@ -1,24 +1,21 @@
 <template>
-<aside class="left_menu">
+<aside class="aside_menu">
     <router-link to="/" class="project_logo">
-        <!-- <img src="@/assets/Image/logo/logo_row_FFF.png" alt="Logo"> -->
+        <img src="@/assets/Image/logo/logo_row_FFF.png" alt="Logo">
     </router-link>
     <div class="menu_zone">
-        <div v-for="menu,index in menus" :class="{menu_row: menuList==i}"> 
-            <input type="radio" name="menu_title" :id="'menu_title' + index">
-                <label :for="'menu_title' + index">
-                    <!-- <img :src="require(`@/assets/Image/icon/menu_icon_${menu.photoId}.png`)" alt="Menu"> -->
-                    <p class="more">{{menu.title}}</p>
-                </label>
-            <div class="content">
-                <ul>
-                    <li>
-                        <router-link v-for="router,index in menu.routes" :key="router.path" :to="router.path" :class="{router_list: routerList==i}">
-                            <p class="router_name">{{router.myname}}</p>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
+        <div class="menu_row" v-for="menu,index in menus" :key="menu"> 
+            <input type="radio" name="menu_title" :id="'menu_title' + index" v-model="openMenu" :value="menu.title">
+            <label :for="'menu_title' + index">
+                <p class="more">{{menu.title}}</p>
+            </label>
+            <ul class="content" v-for="router,index in menu.routes">
+                <li>
+                    <router-link class="router_list" :key="router" :to="router.path">
+                        <p class="router_name">{{router.myname}}</p>
+                    </router-link>
+                </li>
+            </ul>
         </div>
     </div>
 </aside>
@@ -26,12 +23,10 @@
 
 <script>
 
-import{routes} from '@/router/index.js'
-
 export default {
     data() {
         return {
-            projectName: '營火叢後台系統管理',
+            openMenu: '',
             menus: [
                 {
                     title:'營區預訂',
@@ -148,6 +143,14 @@ export default {
             ],
         }
     },
+    watch: {
+        openMenu(nVal) {
+            localStorage.setItem('menu-tab', nVal);
+        }
+    },
+    mounted(){
+        this.openMenu = localStorage.getItem('menu-tab');
+    }
 }
 </script>
 

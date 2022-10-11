@@ -1,3 +1,4 @@
+
 .page_section{
     margin-top: 80px;
     margin-left: 230px;
@@ -22,20 +23,20 @@
     border-radius: 5px;
     letter-spacing: 1px;
     font-size: 16px;
-    background-color: #eeeeee;
+    background-color: #F3F3F9;
 }
 .serch_bar button{
     margin: 0 6px;
     width: 70px;
     height: 40px;
-    border: 1px solid #454545;
+    border: none;
     border-radius: 5px;
-    color: #454545;
-    background-color: #FFFFFF;
+    color: #FFFFFF;
+    background-color: #168D80;
 }
 .serch_bar button:hover{
     border: none;
-    background-color: #eeeeee;
+    background-color: #0E685E;
 }
 
 table{
@@ -53,7 +54,7 @@ th{
     font-weight: 400;
 }
 .table_title{
-    background-color: #129795;
+    background-color: #4D8084;
 }
 .item_content{
     background-color: #F5F2E9;
