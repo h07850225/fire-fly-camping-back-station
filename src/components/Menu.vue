@@ -5,7 +5,7 @@
     </router-link>
     <div class="menu_zone">
         <div v-for="menu,index in menus" :class="{menu_row: menuList==i}"> 
-            <input type="radio" name="menu_title" :id="'menu_title' + index" checked="checked">
+            <input type="radio" name="menu_title" :id="'menu_title' + index">
                 <label :for="'menu_title' + index">
                     <!-- <img :src="require(`@/assets/Image/icon/menu_icon_${menu.photoId}.png`)" alt="Menu"> -->
                     <p class="more">{{menu.title}}</p>
@@ -13,7 +13,7 @@
             <div class="content">
                 <ul>
                     <li>
-                        <router-link v-for="router in menu.routes" :key="router.path" :to="router.path" :class="{router_list: routerList==i}">
+                        <router-link v-for="router,index in menu.routes" :key="router.path" :to="router.path" :class="{router_list: routerList==i}">
                             <p class="router_name">{{router.myname}}</p>
                         </router-link>
                     </li>
@@ -146,7 +146,6 @@ export default {
                     ],
                 },
             ],
-
         }
     },
 }
